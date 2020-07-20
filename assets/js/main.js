@@ -55,26 +55,30 @@ function sendData() {
                     rounds = document.getElementById("custom-number").value
                 }
             }
-            if (index > rounds) {
-                result.innerHTML += `<b style="color:#DC3545"">You have exceeded the allowed amount of guesses, <a href="">Play Again</a></b><br>`
-                document.getElementById("radio").innerHTML = `<b style="color:#DC3545"">${index}/${rounds}</b>`
-                document.getElementById("buttons").innerHTML = '<input type="button" value="Reset" id="reset" class="btn" onClick="history.go(0)">'
-            }
-            else if (index == rounds) {
+            // if (index > rounds) {
+            //     result.innerHTML += `<b style="color:#DC3545"">You have exceeded the allowed amount of guesses, <a href="">Play Again</a></b><br>`
+            //     document.getElementById("radio").innerHTML = `<b style="color:#DC3545"">${index}/${rounds}</b>`
+            // }
+            if (index == rounds) {
                 if (guess == random) {
                     result.innerHTML += `<b style="color:#28A745">${index} - This was your last try! And you got me, I'm ${random}. <a href="">You Win!! Play Again</a></b><br>`
                     document.getElementById("radio").innerHTML = `<b style="color:#28A745">${index}/${rounds}</b>`
+                    document.getElementById("send").disabled = true
+                    document.getElementById("send").style.background = "#6C757D"
                 }
                 else {
                     result.innerHTML += `<b style="color:#DC3545">${index} - This was your last try! The correct number would have been ${random}.  <a href="">Play Again</a></b><br>`
                     document.getElementById("radio").innerHTML = `<b style="color:#DC3545">${index}/${rounds}</b>`
+                    document.getElementById("send").disabled = true
+                    document.getElementById("send").style.background = "#6C757D"
                 }
             }
             else {
                 if (guess == random) {
                     result.innerHTML += `<b style="color:#28A745">${index} - Yes!! You  got me in ${index} guesses, I'm ${random}. <a href="">You Win!! Play Again</a></b><br>`
-                    // document.getElementById("buttons").innerHTML = '<input type="button" value="Reset" id="reset" class="btn" onClick="history.go(0)">'
                     document.getElementById("radio").innerHTML = `<b style="color:#28A745">${index}/${rounds}</b>`
+                    document.getElementById("send").disabled = true
+                    document.getElementById("send").style.background = "#6C757D"
                 }
                 else if (guess < random) {
                     result.innerHTML += `${index} - You need to guess higher than ${guess}, try again.<br>`
